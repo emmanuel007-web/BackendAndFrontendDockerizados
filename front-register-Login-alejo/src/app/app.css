@@ -1,0 +1,19 @@
+
+:host {
+  --color-bg:        #050a14;
+  --color-surface:   rgba(255, 255, 255, 0.03);
+  --color-border:    rgba(255, 255, 255, 0.08);
+  --color-primary:   #8b5cf6;
+  --color-primary-h: #a78bfa;
+  --color-primary-d: #7c3aed;
+  --color-text:      #f1f5f9;
+  --color-muted:     rgba(148, 163, 184, 0.8);
+  --color-subtle:    rgba(100, 116, 139, 0.6);
+  --font-mono:       'Space Mono', monospace;
+  --font-sans:       'DM Sans', sans-serif;
+  --radius:          12px;
+  --transition:      0.25s ease;
+
+  display: block;
+  font-family: var(--font-sans);
+}

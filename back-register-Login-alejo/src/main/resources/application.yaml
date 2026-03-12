@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: registerAndLogin
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydb
+    username: admin
+    password: secret
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  jackson:
+    default-property-inclusion: non_null
+
+server:
+  port: 8080
+
+jwt:
+  secret: ${JWT_SECRET:bXlfc3VwZXJfc2VjcmV0X2tleV9mb3Jfand0X3Rva2Vuc18xMjM0NTY3ODk=}
+  expiration: 3600000  # 1 hora en ms

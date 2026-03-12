@@ -1,0 +1,374 @@
+/* ── Wrapper ── */
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Fondo decorativo ── */
+.bg-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.12;
+  animation: float 8s ease-in-out infinite;
+}
+
+.shape-1 { width: 500px; height: 500px; background: #8b5cf6; top: -200px;  right: -100px; animation-delay: 0s; }
+.shape-2 { width: 350px; height: 350px; background: #3b82f6; bottom: -100px; left: -80px;  animation-delay: -3s; }
+.shape-3 { width: 200px; height: 200px; background: #ec4899; bottom: 20%;  right: 10%;   animation-delay: -5s; }
+
+.grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-30px) scale(1.05); }
+}
+
+/* ── Tarjeta ── */
+.login-card {
+  position: relative;
+  z-index: 10;
+  width: 420px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  padding: 44px 40px 36px;
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.08),
+    0 32px 80px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  animation: cardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── Top row: marca + volver ── */
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ── Botón volver a home ── */
+.home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 400;
+  color: rgba(148, 163, 184, 0.6);
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.03);
+  transition: color var(--transition), border-color var(--transition),
+              background var(--transition), transform var(--transition);
+}
+
+.home-link svg {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--transition);
+}
+
+.home-link:hover {
+  color: var(--color-primary-h);
+  border-color: rgba(167, 139, 250, 0.3);
+  background: rgba(139, 92, 246, 0.07);
+  transform: translateY(-1px);
+}
+
+.home-link:hover svg {
+  transform: translateX(-3px);
+}
+
+
+
+.brand-icon {
+  width: 36px;
+  height: 36px;
+  color: var(--color-primary-h);
+}
+
+.brand-name {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: #e2e8f0;
+  opacity: 0.9;
+}
+
+/* ── Encabezado ── */
+.card-header {
+  margin-bottom: 32px;
+}
+
+.card-header h1 {
+  font-size: 28px;
+  font-weight: 300;
+  color: #f8fafc;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.card-header p {
+  font-size: 13.5px;
+  color: var(--color-muted);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+
+/* ── Error ── */
+.error-msg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #fca5a5;
+  font-size: 13px;
+  margin-bottom: 20px;
+  animation: msgIn 0.3s ease forwards;
+}
+
+.error-msg svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Formulario ── */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Campo ── */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-group label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-subtle);
+  transition: color var(--transition);
+}
+
+.field-group.focused label { color: var(--color-primary-h); }
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  width: 18px;
+  height: 18px;
+  color: rgba(100, 116, 139, 0.7);
+  transition: color var(--transition);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon svg { width: 18px; height: 18px; }
+
+.field-group.focused .input-icon { color: var(--color-primary-h); }
+
+input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 13px 14px 13px 44px;
+  color: #f1f5f9;
+  font-size: 14.5px;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  outline: none;
+  transition: all var(--transition);
+  letter-spacing: 0.01em;
+}
+
+input::placeholder {
+  color: rgba(100, 116, 139, 0.4);
+  font-weight: 300;
+}
+
+input:focus {
+  border-color: rgba(139, 92, 246, 0.5);
+  background: rgba(139, 92, 246, 0.05);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(100, 116, 139, 0.6);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color var(--transition);
+  border-radius: 6px;
+}
+
+.toggle-password:hover { color: #94a3b8; }
+.toggle-password svg { width: 17px; height: 17px; }
+
+/* ── Olvidé contraseña ── */
+.forgot-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -6px;
+}
+
+.forgot-link {
+  font-size: 12.5px;
+  color: rgba(167, 139, 250, 0.7);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color var(--transition);
+}
+
+.forgot-link:hover { color: var(--color-primary-h); }
+
+/* ── Botón principal ── */
+.btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 24px;
+  margin-top: 4px;
+  background: linear-gradient(135deg, var(--color-primary-d) 0%, var(--color-primary) 50%, #6d28d9 100%);
+  border: none;
+  border-radius: var(--radius);
+  color: #fff;
+  font-size: 14.5px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-submit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.08) 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5);
+}
+
+.btn-submit:hover:not(:disabled)::before { opacity: 1; }
+.btn-submit:active:not(:disabled) { transform: translateY(0); }
+
+.btn-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.btn-submit svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s;
+}
+
+.btn-submit:hover:not(:disabled) svg { transform: translateX(3px); }
+
+/* ── Spinner ── */
+.spinner {
+  width: 17px;
+  height: 17px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Footer ── */
+.card-footer {
+  margin-top: 28px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-subtle);
+  font-weight: 300;
+}
+
+.card-footer a {
+  color: var(--color-primary-h);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color var(--transition);
+}
+
+.card-footer a:hover { color: #c4b5fd; }
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .login-card {
+    width: calc(100vw - 32px);
+    padding: 36px 28px 30px;
+  }
+}

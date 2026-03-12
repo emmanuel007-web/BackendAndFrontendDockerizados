@@ -1,0 +1,94 @@
+<div class="home-wrapper">
+
+  <!-- Fondo decorativo -->
+  <div class="bg-shapes" aria-hidden="true">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="grid-lines"></div>
+  </div>
+
+  <div class="home-card">
+
+    <!-- Marca -->
+    <div class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 40 40" fill="none">
+          <polygon points="20,2 38,12 38,28 20,38 2,28 2,12" fill="none" stroke="currentColor" stroke-width="2"/>
+          <polygon points="20,10 30,16 30,24 20,30 10,24 10,16" fill="currentColor" opacity="0.3"/>
+          <circle cx="20" cy="20" r="4" fill="currentColor"/>
+        </svg>
+      </div>
+      <span class="brand-name">NEXUS</span>
+    </div>
+
+    <!-- Si está logueado -->
+    @if (isLoggedIn) {
+      <div class="welcome-block">
+        <div class="avatar">{{ username.charAt(0).toUpperCase() }}</div>
+        <h1>Bienvenido, <span class="highlight">{{ username }}</span></h1>
+        <p class="subtitle">Has iniciado sesión correctamente.</p>
+
+        @if (logoutSuccess) {
+          <div class="success-msg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="9,12 12,15 16,9"/>
+            </svg>
+            Sesión cerrada exitosamente.
+          </div>
+        }
+
+        <button class="btn-logout" (click)="doLogout()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16,17 21,12 16,7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+          <span>Cerrar sesión</span>
+        </button>
+      </div>
+    }
+
+    <!-- Si NO está logueado -->
+    @if (!isLoggedIn) {
+
+      @if (logoutSuccess) {
+        <div class="success-msg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="9,12 12,15 16,9"/>
+          </svg>
+          Sesión cerrada exitosamente.
+        </div>
+      }
+
+      <div class="tagline">
+        <h1>Tu plataforma<br><span class="highlight">segura</span></h1>
+        <p class="subtitle">Gestiona tu acceso de forma simple y segura.</p>
+      </div>
+
+      <nav class="auth-group">
+        <a routerLink="/register" class="btn-register">
+          <svg class="icon" viewBox="0 0 16 16" fill="none">
+            <path d="M8 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm0 8c3.314 0 6 1.343 6 3v.5H2V13c0-1.657 2.686-3 6-3z" fill="currentColor"/>
+            <path d="M13 5.5V4m0 0V2.5M13 4h1.5M13 4h-1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          <span>Registrarse</span>
+        </a>
+
+        <div class="divider"></div>
+
+        <a routerLink="/login" class="btn-login">
+          <svg class="icon" viewBox="0 0 16 16" fill="none">
+            <path d="M6 2H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M10.5 5 14 8l-3.5 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 8H6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          <span>Iniciar sesión</span>
+        </a>
+      </nav>
+    }
+
+  </div>
+</div>
