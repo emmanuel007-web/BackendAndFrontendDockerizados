@@ -4,9 +4,9 @@ services:
     image: postgres:16
     container_name: postgres-db
     environment:
-      POSTGRES_DB: mydb
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
@@ -21,10 +21,10 @@ services:
     container_name: spring_backend
     ports:
       - "8080:8080"
-    environment:                                                          
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/mydb
-      SPRING_DATASOURCE_USERNAME: admin
-      SPRING_DATASOURCE_PASSWORD: secret
+    environment:
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     depends_on:
       - postgres
@@ -50,5 +50,3 @@ volumes:
 networks:
   front-network:
   db-network:
-
-
