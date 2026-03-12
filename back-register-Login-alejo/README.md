@@ -34,7 +34,7 @@ docker --version
 # Paso 1: Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/register-login-backend.git
+git clone https://github.com/emmanuel007-web/BackendAndFrontendDockerizados.git
 ```
 
 Entrar a la carpeta del proyecto:
